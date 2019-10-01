@@ -9,13 +9,12 @@ repository attempts to help you make that decision by allowing each member of
 a team to estimate how a piece of work maps to your chosen principles
 or themes.
 
-TODO Screenshot
+![A Radar Chart to theme mapping screenshot](/images/radar-chart-theme-mapping.png "Radar Chart to theme mapping screenshot")
 
 Each member of the team assigns a score to each theme, the higher the
 score (ranged from 0-10) the more the work fits the theme. Once you can
 then use the graphs created by this tool to view these ratings as a
 whole and see if there are any obvious disagreements to discuss.
-
 
 ## Installing and running
 
