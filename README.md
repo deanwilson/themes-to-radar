@@ -9,13 +9,12 @@ repository attempts to help you make that decision by allowing each member of
 a team to estimate how a piece of work maps to your chosen principles
 or themes.
 
-TODO Screenshot
+![A Radar Chart to theme mapping screenshot](/images/radar-chart-theme-mapping.png "Radar Chart to theme mapping screenshot")
 
 Each member of the team assigns a score to each theme, the higher the
 score (ranged from 0-10) the more the work fits the theme. Once you can
 then use the graphs created by this tool to view these ratings as a
 whole and see if there are any obvious disagreements to discuss.
-
 
 ## Installing and running
 
@@ -36,7 +35,7 @@ CSS. It does *not* require Node.
 
 Now we're installed all the required software run the application with the sample data
 
-    MISSIONS_DATA=sample-missions/cost-saving/ FLASK_APP=app.py flask run
+    MISSIONS_DATA=sample-missions/cost-savings/ FLASK_APP=app.py flask run
 
 Open your web browser and visit
 [http://127.0.0.1:5000/](http://127.0.0.1:5000/ "Local flask webserver")
