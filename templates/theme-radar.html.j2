@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- TODO - add integrity= -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css')}}">
+
+    <title>Mission Rating Radar Charts</title>
+  </head>
+  <body>
+
+    <div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+      <h3 class="display-4">Radar charts for {{ mission }}</h1>
+    </div>
+
+   <div class="container">
+      <div class="card-deck mb-3 text-center">
+        <div class="card mb-4 box-shadow">
+          <canvas id="combinedChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Load Chart.JS - used to render the radar charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <!-- Add colours to the graph -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-colorschemes"></script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- my custom (inline ew) javascript -->
+    <script>
+    data = {
+      labels: {{ labels|safe }},
+      datasets: [
+      {% for dataset in datasets %}
+        {
+          label: '{{ dataset["label"] }}',
+          data: {{ dataset["data"] }},
+        },
+      {% endfor %}
+      ]
+    }
+
+    options = {
+        plugins: {
+            colorschemes: {
+                scheme: 'brewer.DarkTwo5'
+            }
+        },
+        scale: {
+          ticks: {
+            beginAtZero: true,
+            min: 0,
+            max: 10,
+            stepSize: 1
+          },
+          pointLabels: {
+            fontSize: 18
+          }
+        },
+        legend: {
+            position: 'left'
+        }
+    }
+
+    var ctx = document.getElementById('combinedChart')
+
+    var myRadarChart = new Chart(ctx, {
+        type: 'radar',
+        data: data,
+        options: options
+    });
+
+    </script>
+
+  </body>
+</html>
