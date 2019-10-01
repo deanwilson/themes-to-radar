@@ -36,7 +36,7 @@ CSS. It does *not* require Node.
 
 Now we're installed all the required software run the application with the sample data
 
-    MISSIONS_DATA=sample-missions/cost-saving/ FLASK_APP=app.py flask run
+    MISSIONS_DATA=sample-missions/cost-savings/ FLASK_APP=app.py flask run
 
 Open your web browser and visit
 [http://127.0.0.1:5000/](http://127.0.0.1:5000/ "Local flask webserver")
